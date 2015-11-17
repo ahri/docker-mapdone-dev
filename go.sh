@@ -17,6 +17,7 @@ echo "devgroup:x:$gid:" >> /etc/group
 
 su devuser -s /bin/sh -c "
 	cd /tmp && \
+    rm -rf repo && \
 	GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' git clone '$repo' repo && \
 	cd repo && \
 	rake $@ \
